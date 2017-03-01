@@ -1,0 +1,33 @@
+<h1>People</h1>
+<div ng-app="app">
+  <div ng-controller="peopleCtrl" ng-init="setup()">
+
+    <datalist id="names">
+      <option ng-repeat="person in people">{{ person.name }}</option>
+    </datalist>
+
+    <div>
+      <input type="text" ng-model="nameFilter"> Search
+      <button ng-click="toggleOrderAttribute('name')">order by name</button>
+      <button ng-click="toggleOrderAttribute('bio')">order by bio</button>
+    </div>
+
+
+    <div ng-repeat="person in people | filter: { name: nameFilter } | orderBy:orderAttribute:ascending">
+      <h3 ng-click="toggleBio(person)">{{ person.name }}</h3>
+      <p ng-if="person.bioVisible">{{ person.bio }} 
+        <a href="#" ng-click="deletePerson(person)">Delete</a>
+      </p>
+    </div>
+
+    <div id="new-person-form">
+      <li ng-repeat="error in errors track by index">{{ error }}</li>
+      Name: <input type="text" ng-model="newPersonName">
+      Bio: <input type="text" ng-model="newPersonBio">
+      <button ng-click="addPerson(newPersonName, newPersonBio)">Add Person</button>
+    </div>
+    <div>
+      <h4>Total number of people: {{ people.length }}</h4>
+    </div>
+  </div>
+</div>

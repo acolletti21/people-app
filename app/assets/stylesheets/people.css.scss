@@ -1,0 +1,19 @@
+.strike {
+  text-decoration: line-through;
+}
+
+.ng-enter, .ng-move{
+  -webkit-animation: pulse 2s;
+  -moz-animation: pulse 2s;
+  -o-animation: pulse 2s;
+  animation: pulse 2s;
+}
+
+
+.ng-leave{
+  -webkit-animation: fadeOut 2s;
+  -moz-animation: fadeOut 2s;
+  -o-animation: fadeOut 2s;
+  animation: fadeOut 2s;
+}
+
